@@ -4,6 +4,7 @@ import { createGlobalStyle } from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginPage from "./component/View/LoginPage";
 import MainPage from "./component/View/MainPage";
+import GamePage from "./component/View/GamePage";
 
 const GlobalStyle = createGlobalStyle`
 	html {
@@ -35,6 +36,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={MainPage} />
         <Route path="/login" exact component={LoginPage} />
+        <Route path="/game/:game_id" exact component={GamePage} />
       </Switch>
     </Router>
   );
