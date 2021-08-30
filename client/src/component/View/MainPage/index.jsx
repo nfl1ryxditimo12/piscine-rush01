@@ -2,7 +2,8 @@ import React from "react";
 import Base from "../../Layout";
 import "antd/dist/antd.css";
 import "../../../style/custom-antd.css";
-import { List, Card, Input, Space } from "antd";
+import { List, Card, Input, Button, Tooltip } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 const { Search } = Input;
@@ -10,73 +11,84 @@ const tmpRooms = [
   {
     title: "nkim 서버",
     isFull: false,
-    path: 1,
+    roomCode: 1,
   },
   {
     title: "iha 서버",
-    isFull: false,
-    path: 2,
+    isFull: true,
+    roomCode: 2,
   },
   {
     title: "yejeong 서버",
-    isFull: false,
-    path: 3,
+    isFull: true,
+    roomCode: 3,
   },
   {
     title: "ji-park 서버",
     isFull: false,
-    path: 4,
+    roomCode: 4,
   },
   {
     title: "hannkim 서버",
     isFull: false,
-    path: 5,
+    roomCode: 5,
   },
   {
     title: "seonkim 서버",
     isFull: false,
-    path: 6,
+    roomCode: 6,
   },
   {
     title: "jikwon 서버",
     isFull: false,
-    path: 7,
+    roomCode: 7,
   },
   {
     title: "juno 서버",
     isFull: false,
-    path: 8,
+    roomCode: 8,
   },
   {
     title: "seomoon 서버",
     isFull: false,
-    path: 9,
+    roomCode: 9,
   },
   {
     title: "seomoon 서버",
     isFull: false,
-    path: 10,
+    roomCode: 10,
   },
   {
     title: "seomoon 서버",
     isFull: false,
-    path: 11,
+    roomCode: 11,
   },
 ];
 const MainPage = () => {
   return (
     <Base>
-      <Search
-        placeholder="input search text"
-        allowClear
-        onSearch={() => {
-          console.log("search!");
-        }}
+      <div
         style={{
-          width: 200,
+          display: "flex",
+          justifyContent: "space-between",
           marginBottom: "20px",
         }}
-      />
+      >
+        <Tooltip title="방 만들기">
+          <Button shape="circle" icon={<PlusOutlined />} size="large" />
+        </Tooltip>
+        <Search
+          placeholder="방이름 혹은 서버코드로 검색"
+          allowClear
+          onSearch={() => {
+            console.log("search!");
+          }}
+          style={{
+            width: 300,
+          }}
+        />
+      </div>
+
       <List
         grid={{
           gutter: 16,
@@ -98,7 +110,25 @@ const MainPage = () => {
           <Link path="#">
             <List.Item>
               <Card title={item.title}>
-                인원수 {item.isFull ? "2 / 2" : "1 / 2"}
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <span>
+                    인원수{" "}
+                    {item.isFull ? (
+                      <span style={{ color: "red" }}>
+                        <b>2 / 2</b>
+                      </span>
+                    ) : (
+                      <span style={{ color: "blue" }}>
+                        <b>1 / 2</b>
+                      </span>
+                    )}
+                  </span>
+                  <span>
+                    <b>Code #1234</b>
+                  </span>
+                </div>
               </Card>
             </List.Item>
           </Link>
