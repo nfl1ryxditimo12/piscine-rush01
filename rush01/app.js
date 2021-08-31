@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const logger = require('morgan');
@@ -15,6 +16,11 @@ const app = express();
 passportConfig();
 app.set('views', __dirname + '/views'); // __dirname -> 디렉토리 루트 
 app.set('view engine', 'ejs'); //뷰엔진을 ejs로 한다 
+
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true
+}
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -36,7 +42,7 @@ app.use(session({
 app.use(passport.initialize());
 // passport.session 미들웨어는 req.session 객체 passport 정보를 저장합니다.
 app.use(passport.session());
-
+app.use(cors(corsOptions));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
