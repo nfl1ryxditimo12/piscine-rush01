@@ -5,6 +5,7 @@ import "../../../style/custom-antd.css";
 import { List, Card, Input, Button, Tooltip } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const { Search } = Input;
 const tmpRooms = [
@@ -65,8 +66,11 @@ const tmpRooms = [
   },
 ];
 const MainPage = () => {
+  const user = useSelector((state) => state.user.userData);
+  const { nickname, profileUrl } = user;
+
   return (
-    <Base>
+    <Base profile={profileUrl} username={nickname}>
       <div
         style={{
           display: "flex",

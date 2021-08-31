@@ -1,6 +1,4 @@
-import React, { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { loginUser } from "../../../_action/user_action";
+import React from "react";
 import {
   LoginImg,
   LoginButton,
@@ -9,23 +7,13 @@ import {
 } from "./LoginComponents";
 
 const LoginPage = () => {
-  const dispatch = useDispatch();
-
-  const onLogin = useCallback(
-    (e) => {
-      e.preventDefault();
-      console.log("login");
-      dispatch(loginUser()).then((res) => {
-        console.log(res);
-      });
-    },
-    [dispatch]
-  );
   return (
     <LoginWrapper>
       <LoginForm>
         <LoginImg>Indian Pocker</LoginImg>
-        <LoginButton onClick={onLogin}>LOGIN</LoginButton>
+        <LoginButton>
+          <a href="http://localhost:5000/login">Login</a>
+        </LoginButton>
       </LoginForm>
     </LoginWrapper>
   );
