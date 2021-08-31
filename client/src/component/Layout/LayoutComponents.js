@@ -51,6 +51,14 @@ export const Content = styled.div`
   opacity: 1;
 `;
 
+export const GameContent = styled.div`
+  width: 100%;
+  height: 90%;
+  padding: 100px 100px;
+  overflow: visible;
+  opacity: 1;
+`;
+
 export const Layout = styled.div`
   width: 100%;
   height: 100%;

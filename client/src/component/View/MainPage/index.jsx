@@ -1,5 +1,5 @@
 import React from "react";
-import Base from "../../Layout";
+import { Base } from "../../Layout/index";
 import "antd/dist/antd.css";
 import "../../../style/custom-antd.css";
 import { List, Card, Input, Button, Tooltip } from "antd";
