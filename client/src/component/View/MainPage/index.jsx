@@ -109,7 +109,7 @@ const MainPage = () => {
         renderItem={(item) => (
           <Link path="#">
             <List.Item>
-              <Card title={item.title}>
+              <Card title={item.title} style={{ borderRadius: "8px" }}>
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
