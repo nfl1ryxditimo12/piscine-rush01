@@ -11,6 +11,7 @@ const passportConfig = require("./passport"); // 패스포트 만든것들을 �
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
+const socketRouter = require('./routes/socket');
 const app = express();
 passportConfig();
 app.set('views', __dirname + '/views'); // __dirname -> 디렉토리 루트 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use(session({
   resave: false,
@@ -40,6 +42,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
+app.use('/socket', socketRouter);
 
 
 
