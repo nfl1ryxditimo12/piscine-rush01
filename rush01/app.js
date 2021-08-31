@@ -40,8 +40,10 @@ app.use(session({
 
 // passport.initialize() -> 요청(req)객체에 passport 설정합니다.
 app.use(passport.initialize());
-// passport.session 미들웨어는 req.session 객체 passport 정보를 저장합니다.
 app.use(passport.session());
+
+// passport.session 미들웨어는 req.session 객체 passport 정보를 저장합니다.
+
 app.use(cors(corsOptions));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
