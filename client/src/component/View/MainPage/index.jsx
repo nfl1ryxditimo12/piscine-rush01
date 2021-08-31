@@ -1,10 +1,13 @@
-import React from "react";
-import { Base } from "../../Layout/index";
+import React, { useEffect } from "react";
+import Base from "../../Layout";
 import "antd/dist/antd.css";
 import "../../../style/custom-antd.css";
 import { List, Card, Input, Button, Tooltip } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { io } from "socket.io-client";
+import { loadRooms } from "../../../_action/socket_action";
 
 const { Search } = Input;
 const tmpRooms = [
@@ -65,8 +68,20 @@ const tmpRooms = [
   },
 ];
 const MainPage = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.userData);
+  const { nickname, profile } = user;
+
+  useEffect(() => {
+    const socket = io("http://localhost:5000/socket");
+    socket.emit("load rooms");
+    socket.on("load rooms", (res) => {
+      console.log(`Socket Success : ${res}`);
+    });
+  }, []);
+
   return (
-    <Base>
+    <Base username={nickname} profile={profile}>
       <div
         style={{
           display: "flex",
@@ -88,7 +103,6 @@ const MainPage = () => {
           }}
         />
       </div>
-
       <List
         grid={{
           gutter: 16,
@@ -107,7 +121,7 @@ const MainPage = () => {
         }}
         dataSource={tmpRooms}
         renderItem={(item) => (
-          <Link path="#">
+          <Link to="/">
             <List.Item>
               <Card title={item.title} style={{ borderRadius: "8px" }}>
                 <div

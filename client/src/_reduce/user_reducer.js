@@ -6,8 +6,17 @@ import {
   ROOM_INFO,
 } from "../_type/user_type";
 
+const userState = {
+  userData: {
+    nickname: "oohyo",
+    username: "nkim",
+    profile: null,
+    email: "nkim@student.42.kr",
+  },
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default function (state = {}, action) {
+export default function (state = userState, action) {
   switch (action.type) {
     case LOGIN_USER:
       return { ...state, loginSuccess: action.payload };
