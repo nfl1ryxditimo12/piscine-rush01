@@ -16,9 +16,9 @@ module.exports = () => {
     cb(err, obj) : session에 저장하는 함수
     */
         function (accessToken, refreshToken, profile, cb){
-            console.log("요청 들어옴");
+            // console.log("요청 들어옴");
             console.log('accessToken', accessToken, 'refreshToken', refreshToken);
-            console.log(profile.username);
+            // console.log(profile.username);
             return cb(null, profile);
             // callback함수를 실행하면 두 번째 인자로 넣은 정보를 serializeUser 미들웨어로 전달한다.
         }));
