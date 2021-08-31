@@ -1,4 +1,10 @@
-import { LOGIN_USER, REGIST_USER, AUTH_USER } from "../_type/user_type";
+import {
+  LOGIN_USER,
+  REGIST_USER,
+  AUTH_USER,
+  ROOM_STATE,
+  ROOM_INFO,
+} from "../_type/user_type";
 
 const userState = {
   userData: {
@@ -22,6 +28,14 @@ export default function (state = userState, action) {
       break;
     case AUTH_USER:
       return { ...state, userData: action.payload };
+      // eslint-disable-next-line no-unreachable
+      break;
+    case ROOM_STATE:
+      return { ...state, roomState: action.payload };
+      // eslint-disable-next-line no-unreachable
+      break;
+    case ROOM_INFO:
+      return { ...state, roomInfo: action.payload };
       // eslint-disable-next-line no-unreachable
       break;
     default:

@@ -1,7 +1,13 @@
 import React from "react";
-import { Layout, Header, Content, Footer } from "./LayoutComponents";
+import {
+  Layout,
+  Header,
+  Content,
+  GameContent,
+  Footer,
+} from "./LayoutComponents";
 
-const Base = ({ children, profile, username }) => {
+export const Base = ({ children, profile, username }) => {
   return (
     <Layout>
       <Header logo="Indian Pocker" profile={profile} username={username} />
@@ -14,4 +20,11 @@ const Base = ({ children, profile, username }) => {
   );
 };
 
-export default Base;
+export const GameBase = ({ children, profile, username }) => {
+  return (
+    <Layout>
+      <Header logo="Indian Pocker" profile={profile} username={username} />
+      <GameContent>{children}</GameContent>
+    </Layout>
+  );
+};
