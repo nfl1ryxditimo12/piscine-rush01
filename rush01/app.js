@@ -8,7 +8,6 @@ const logger = require('morgan');
 const passport = require('passport');
 const passportConfig = require("./passport"); // 패스포트 만든것들을 사용할 수 있음
 
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
@@ -45,28 +44,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // passport.session 미들웨어는 req.session 객체 passport 정보를 저장합니다.
-
 app.use(cors(corsOptions));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/socket', socketRouter);
-
-
-
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
-
-// error handler
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-//   // render the error page
-//   res.status(err.status || 500);
-// });
 
 module.exports = app;

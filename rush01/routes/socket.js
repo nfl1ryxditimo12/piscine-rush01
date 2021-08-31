@@ -8,11 +8,11 @@ const port = process.env.PORT || 3000;
 const { user } = require('../models');
 const { room } = require('../models');
 
-router.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
+// router.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/index.html');
+// });
 
-const rooms = {};
+const rooms = {hi: "hello"};
 
 io.on('connection', (socket) => {
 
@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
 		});
 	})
 
-	socket.on('join room', (info) => {
+	socket.on('join room', async(info) => {
 		const code = info.room_code;
 		const cur_room = rooms.code;
 		const opp_id = cur_room.creator;
@@ -142,6 +142,8 @@ io.on('connection', (socket) => {
 
 });
 
-server.listen(port, () => {
-  console.log(`Socket.IO server running at http://localhost:${port}/`);
-});
+module.exports = router;
+
+// server.listen(port, () => {
+//   console.log(`Socket.IO server running at http://localhost:${port}/`);
+// });

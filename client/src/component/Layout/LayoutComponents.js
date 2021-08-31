@@ -26,9 +26,9 @@ export const Header = ({ children, logo, profile = null, username = null }) => {
     <div style={headerStyle}>
       {children}
       <span>{logo}</span>
-      <Link>
+      <Link to="/">
         <Avatar size="large" icon={profile ? profile : <UserOutlined />} />
-        <span style={usernameStyle}>nkim</span>
+        <span style={usernameStyle}>{username}</span>
       </Link>
     </div>
   );
