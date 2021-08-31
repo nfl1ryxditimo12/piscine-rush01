@@ -1,11 +1,10 @@
 import React from "react";
-import logo from "../../../image/pocker.png";
 import {
   ButtonBox,
   InputBox,
   RegisterContainer,
   RegisterForm,
-} from "../../Global/Input/InputComponent";
+} from "./RegisterComponents";
 
 const RegisterPage = () => {
   const logoStyle = {
