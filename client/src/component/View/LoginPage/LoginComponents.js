@@ -33,7 +33,7 @@ export const LoginImg = styled.div`
 
 export const LoginButton = styled.div`
   padding: 12px;
-  border-radius: 4px;
+  border-radius: 16px;
   border: none;
   width: 78%;
   outline: none;
